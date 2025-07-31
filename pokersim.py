@@ -206,6 +206,7 @@ class Simulation:
             for kind in k_counter2.items():
                 if kind[1] == 3 or kind[1] == 2:
                     if Kind.value[kind[0]] > value:
+                        value = Kind.value[kind[0]]
                         _set2 = []
                         for card in seven_cards:
                             if card[1] == kind[0]:
@@ -215,7 +216,10 @@ class Simulation:
                         value_from_seven['kind'] = self.value(_set[0])*2 + _value_from_seven
                         value_from_seven['kicker'] = []
                         value_from_seven['_set'] = _set + _set2
-                        
+        
+        if value_from_seven['rank'] == 6:
+            return value_from_seven
+                   
         # Suit counter
         s_counter = {}
         for card in seven_cards:
@@ -230,12 +234,12 @@ class Simulation:
                 for card in seven_cards:
                     if card[0] == suit[0]:
                             _set.append(card)
-                    _set = sorted(_set, key=self.value)[-5:]
-                    value_from_seven['rank'] = 5
-                    value_from_seven['kind'] = self.value(_set[-1])
-                    value_from_seven['kicker'] = []
-                    value_from_seven['_set'] = _set
-                    return value_from_seven
+                _set = sorted(_set, key=self.value)[-5:]
+                value_from_seven['rank'] = 5
+                value_from_seven['kind'] = self.value(_set[-1])
+                value_from_seven['kicker'] = []
+                value_from_seven['_set'] = _set
+                return value_from_seven
         
         # Straight
         _set = []
@@ -355,7 +359,7 @@ if __name__ == '__main__':
     print('\n >>> START PROGRAM\n')
 
     #Initalization
-    N = 1000
+    N = 5000
     win = 0
     lose = 0
     split = 0
@@ -363,17 +367,17 @@ if __name__ == '__main__':
     # Main cycle
     for i in range(N):
         deck = Deck()
-        player = Hand([deck.deal('??'), deck.deal('??')])
+        player = Hand([deck.deal('D6'), deck.deal('D5')])
         others = [Hand([deck.deal('??'), deck.deal('??')]),
                   Hand([deck.deal('??'), deck.deal('??')]),
                   Hand([deck.deal('??'), deck.deal('??')]),
                   Hand([deck.deal('??'), deck.deal('??')]),
                   Hand([deck.deal('??'), deck.deal('??')])]
-        common = Common([deck.deal('HK'), 
-                         deck.deal('D4'),
-                         deck.deal('C4'), 
-                         deck.deal('CA'),
-                         deck.deal('SA')])
+        common = Common([deck.deal('D3'), 
+                         deck.deal('D2'),
+                         deck.deal('D4'), 
+                         deck.deal('D0'),
+                         deck.deal('S0')])
         
         table = Table()
         table.deal(deck, common, player, others)
