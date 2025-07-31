@@ -13,17 +13,23 @@ if __name__ == '__main__':
     
     for i in range(N):
         deck = Deck()
-        player = Hand([deck.deal('HA'), deck.deal('D5')])
+        
+        """ '[suit][kind]' 
+        suit --> C, D, H, S
+        kind --> 2,3,4,5,6,7,8,9,0,J,Q,K,A
+        '??' --> complete() will deal random cards from the deck
+        """
+        player = Hand([deck.deal('??'), deck.deal('??')])
         others = [Hand([deck.deal('??'), deck.deal('??')]),
                   Hand([deck.deal('??'), deck.deal('??')]),
                   Hand([deck.deal('??'), deck.deal('??')]),
                   Hand([deck.deal('??'), deck.deal('??')]),
                   Hand([deck.deal('??'), deck.deal('??')])]
-        common = Common([deck.deal('D3'), 
-                         deck.deal('D2'),
-                         deck.deal('D4'), 
-                         deck.deal('D0'),
-                         deck.deal('S0')])
+        common = Common([deck.deal('??'), 
+                         deck.deal('??'),
+                         deck.deal('??'), 
+                         deck.deal('??'),
+                         deck.deal('??')])
         
         table = Table()
         table.deal(deck, common, player, others)

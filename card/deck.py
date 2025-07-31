@@ -1,6 +1,6 @@
 from random import choice
 from card.suit import Suit
-from kind import Kind
+from card.kind import Kind
 from card.card import Card
 
 # Init Deck
