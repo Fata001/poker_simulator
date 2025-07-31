@@ -19,17 +19,17 @@ if __name__ == '__main__':
         kind --> 2,3,4,5,6,7,8,9,0,J,Q,K,A
         '??' --> complete() will deal random cards from the deck
         """
-        player = Hand([deck.deal('??'), deck.deal('??')])
+        player = Hand([deck.deal('H7'), deck.deal('H8')])
         others = [Hand([deck.deal('??'), deck.deal('??')]),
                   Hand([deck.deal('??'), deck.deal('??')]),
                   Hand([deck.deal('??'), deck.deal('??')]),
                   Hand([deck.deal('??'), deck.deal('??')]),
                   Hand([deck.deal('??'), deck.deal('??')])]
-        common = Common([deck.deal('??'), 
-                         deck.deal('??'),
-                         deck.deal('??'), 
-                         deck.deal('??'),
-                         deck.deal('??')])
+        common = Common([deck.deal('H0'), 
+                         deck.deal('S9'),
+                         deck.deal('S0'), 
+                         deck.deal('D4'),
+                         deck.deal('DA')])
         
         table = Table()
         table.deal(deck, common, player, others)

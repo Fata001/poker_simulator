@@ -6,6 +6,8 @@ class Table:
         self.others = others
         
     def show_table(self):
+        """Show the the entire table"""
+        
         print('TABLE:')
         print('Deck:', self.deck)
         print('Common cards:', self.common)

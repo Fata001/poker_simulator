@@ -1,5 +1,4 @@
 from utils.evaluation import evaluation_hand
-
 class Simulation:
     def __init__(self, table):
         self.table = table

@@ -6,6 +6,8 @@ from card.card import Card
 # Init Deck
 class Deck:
     def __init__(self):
+        """Init the Deck of 52 Card-s."""
+        
         self.deck = []
         for suit in [Suit('C'), Suit('D'), Suit('H'), Suit('S')]:
             for kind in [Kind('A'), Kind('2'), Kind('3'), Kind('4'), Kind('5'), \
@@ -19,11 +21,17 @@ class Deck:
         return text
     
     def random_deal(self):
+        """Returns (deal) a random card from the deck and remove it from the deck."""
+        
         _temp = choice(self.deck)
         self.deck.remove(_temp)
         return _temp
 
     def deal(self, card: str):
+        """In the case of preliminary defined dealings:
+        '??' Card ---> return Card(Suit('?'), Kind('?')),
+        if the Card is in the Deck, return the Card and remove it from the Deck."""
+        
         if card == '??':
             return Card(Suit('?'), Kind('?'))
         for deck_card in self.deck:
